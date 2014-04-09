@@ -1,0 +1,9 @@
+  <p>
+    <% @post.comments.each do |comment| %>
+   	<blockquote><%= comment.body %><br>
+   	<cite><%= comment.commenter %></cite></blockquote>
+  </p>
+
+<%= link_to 'Destroy Comment', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } if current_user == user %>
+
+<% end %>

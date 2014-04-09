@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+<div>
+
+<nav class="top-bar">
+  <ul class="title-area">
+   </ul>
+    <li class="name">
+    <ul class="right">
+<button href="#" class="button radius"><%= link_to "Posts", posts_path %></button>
+          </ul>
+      <h1>
+        <a href="#">My Site</a>
+          </h1>
+          
+        </li>
+      
+    </nav>
+    <% if current_user %>
+      <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+      <%= link_to "Logout", :logout, method: :post %>
+    <% else %>
+      <button href="#" class="tiny button radius"><%= link_to "Register", new_user_path %></button>
+      <button href="#" class="tiny button radius success"><%= link_to "Login", :login %></button>
+    <% end %>
+  </div>
+    <div>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+        
+  </div>
+ 
+    <%= yield %>
+
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>
